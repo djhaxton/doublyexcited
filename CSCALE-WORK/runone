@@ -1,0 +1,50 @@
+
+# scripts for N=2 doubly excited states by djh
+#
+# Runs for given N, delta, theta, and symmetry, based on initial guess on file.
+# Guess on file has been made by runit N symmetry.
+
+
+if [[ "$3 " == " " ]]
+then
+	echo "stephanie, need input! nprocs, N, sym; optionally delta, theta"
+	exit
+fi
+
+delta=2d0
+theta=0.2d0
+
+nprocs=$1
+np=$2
+sym=$3
+
+if [[ ! "$4 " == " " ]]
+then
+delta=$4
+fi
+
+if [[ ! "$5 " == " " ]]
+then
+theta=$5
+fi
+
+
+inext="$sym.N5"
+outext="$sym.D$delta.T$theta.N$np"
+
+shift
+shift
+shift
+shift
+shift
+
+extraext=""
+for word in $@
+do
+	extraext="$extraext.$word"
+done
+
+echo "SYM $sym"
+
+./runcore $nprocs $np $sym $inext $outext$extraext Theta=$theta Delta=$delta $@
+

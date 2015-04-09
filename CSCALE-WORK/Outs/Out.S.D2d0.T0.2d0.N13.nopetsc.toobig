@@ -1,0 +1,76 @@
+ OUTFILE SET TO Bin/eigvecs.S.D2d0.T0.2d0.N13
+COMPUTING PRIMITIVE HAMILTONIAN...
+STARTING GRID BASIS PROGRAM.
+----------------------------------------------------------------------
+DATATYPE: COMPLEX DOUBLE PRECISION
+GRID POINTS PER DIMENSION:       27
+GRID SPACING:     2.00
+NUMBER OF 3D GRID POINTS:    19683
+TOTAL BASIS DIMENSION:    387420489
+NUMBER OF ELECTRONS:        2
+"NBIG":      27
+TFACTOR*NSMALL/NSMALL:       88      22
+NUMBER OF DESIRED EIGENVALUES:       14
+KRYLOV DIMENSION:      501
+EXTRACTION FREQUENCY:       10
+NUMBER OF MPI PROCESSES:       24
+ 
+gm_usepetscflag        0
+gm_max_inner_iter        5
+----------------------------------------------------------------------
+COMPUTING PRIMITIVE HAMILTONIAN...
+STARTING GRID BASIS PROGRAM.
+----------------------------------------------------------------------
+DATATYPE: COMPLEX DOUBLE PRECISION
+GRID POINTS PER DIMENSION:       27
+GRID SPACING:     2.00
+NUMBER OF 3D GRID POINTS:    19683
+TOTAL BASIS DIMENSION:        19683
+NUMBER OF ELECTRONS:        1
+"NBIG":      27
+TFACTOR*NSMALL/NSMALL:       88      22
+NUMBER OF DESIRED EIGENVALUES:       14
+KRYLOV DIMENSION:      501
+EXTRACTION FREQUENCY:       10
+NUMBER OF MPI PROCESSES:       24
+ 
+gm_usepetscflag        0
+gm_max_inner_iter        5
+----------------------------------------------------------------------
+ ALLOCATING PSI...            1
+      ....OK ALLOC
+COMPUTING PRIMITIVE HAMILTONIAN...
+STARTING GRID BASIS PROGRAM.
+----------------------------------------------------------------------
+DATATYPE: COMPLEX DOUBLE PRECISION
+GRID POINTS PER DIMENSION:       27
+GRID SPACING:     2.00
+NUMBER OF 3D GRID POINTS:    19683
+TOTAL BASIS DIMENSION:    387420489
+NUMBER OF ELECTRONS:        2
+"NBIG":      27
+TFACTOR*NSMALL/NSMALL:       88      22
+NUMBER OF DESIRED EIGENVALUES:       14
+KRYLOV DIMENSION:      501
+EXTRACTION FREQUENCY:       10
+NUMBER OF MPI PROCESSES:       24
+ 
+gm_usepetscflag        0
+gm_max_inner_iter        5
+----------------------------------------------------------------------
+ READING VECTORS.
+ READING            1  VECTORS 
+ FROM FILE ---->Bin/eigvecs.S.N5<----
+ ON READ - LENGTHS DON'T AGREE. FIXING.
+  XX:        19683        1331          13           5
+      .....VECTORS READ.
+SUBSPACE EXPECTATION VALS:
+   -0.71315414287425    0.03522745948576
+  --xx-- 
+
+CHOSEN SHIFT:        -0.7131541429        0.0000000000
+ GPLMR_EIG STARTED ... 
+ THE TARGETED SHIFT IS 
+ (-0.713154142874252,0.000000000000000E+000)
+Application 9480055 exit signals: Killed
+Application 9480055 resources: utime ~1s, stime ~1s, Rss ~4320, inblocks ~46200, outblocks ~129394

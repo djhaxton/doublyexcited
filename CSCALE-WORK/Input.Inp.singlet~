@@ -1,0 +1,45 @@
+
+&main
+       WRITEVECS=.TRUE.
+       THETA=0.2d0
+/
+
+&grid
+       AUTODELTA=.false.
+       DELTA=3d0
+/
+
+&lanczos
+       KDIM=501
+       CHECK=10
+       LANTOL=1D-3
+       LANBLOCKSIZE=3
+/
+
+&molecule
+/
+
+&gmres
+  gm_usepetscflag=1
+  GM_TOL=1d-1
+  GM_PRINT_OUTPUT=.FALSE.
+  GM_MAX_INNER_ITER=3
+/
+
+&orbitals
+       NUMORBS=5
+       NUMORBS=14
+       SINGLET=.TRUE. 
+/
+
+&gplmr
+      TAKEREALPART=.FALSE.
+       GPLMR_SHIFT=(-999d0,0d0)
+       GPLMR_SHIFT=(-0.76d0,0d0)
+       GPLMR_MAXIT=1000000000
+       OUTMODULUS=10
+       GPLMR_TOL=1D-7
+       GPLMR_NEV=1
+       HERMOPT=.FALSE.
+       CSHIFTOPT=.FALSE.
+/

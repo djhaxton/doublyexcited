@@ -1,0 +1,27 @@
+
+# scripts for n=2 doubly excited states
+# sourced by runit.  okay to run alone for a general run output to screen.
+
+if [[ "$2 " == " " ]]
+then
+
+  echo "need N where number of points on side is 2N+1"
+  exit
+fi
+
+ nprocs=$1
+ np=$2
+
+ shift
+ shift
+
+# aprun -n  ./doublyexcited N=$np Inp=Input.Inp.singlet $@ 
+
+ aprun -n $nprocs ./doublyexcited N=$np Inp=Input.Inp.singlet $@ 
+
+# aprun -n 1 ./doublyexcited N=$np Inp=Input.Inp.singlet $@ 
+
+
+
+
+

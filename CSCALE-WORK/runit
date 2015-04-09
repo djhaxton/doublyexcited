@@ -1,0 +1,60 @@
+
+# syntax runit N SYM OTHEROPT1 OTHEROPT2...
+# N is number of points; SYM is symmetry, see readme
+
+if [[ "$3 " == " " ]]
+then
+
+  echo "need npocs; N where number of points on side is 2N+1; and S, S2, S3, S4, T, or T2"
+  exit
+
+fi
+
+nprocs=$1
+np=$2
+ext=$3
+
+case $ext in 
+"S")
+	opt="Infile=eigvecs.S"
+;;
+"T")
+        opt="Trip Nev=3 Infile=eigvecs.T"
+;;
+"T2")
+        opt="Trip Nev=3 Skip=3 Infile=eigvecs.T2"
+;;
+"S2")
+        opt="Nev=5 Skip=1 Infile=eigvecs.S2"
+;;
+"S3")
+        opt="Nev=3 Skip=6 Infile=eigvecs.S3"
+;;
+"S4")
+        opt="Nev=1 Skip=9 Infile=eigvecs.S4"
+;;
+*)
+   echo "ERROR OPTION $ext"
+   exit
+;;
+esac
+
+
+  shift
+  shift
+  shift
+
+extraext=""
+for word in $@
+do
+	extraext="$extraext.$word"
+done
+
+  echo  "./runit0 $nprocs $np $opt Outfile=eigvecs.$ext.N$np$extraext $@ "
+
+  ./runit0 $nprocs $np $opt Outfile=eigvecs.$ext.N$np$extraext $@ |tee Outs/Out.$ext.N$np$extraext
+
+
+
+
+

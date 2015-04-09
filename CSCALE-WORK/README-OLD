@@ -1,0 +1,26 @@
+
+working directory for doublyexcited
+djh 110814
+
+make Bin subdirectory for eigvects files
+be sure to put it on scratch (e.g. $GSCRATCH on edison)
+
+SYM
+---
+# symmetry is
+#    S = 1 singlet S (even)                    1 state
+#    S2 = singlet P even and singlet D odd     8 states
+#    S3 = 2 singlet S (even)                   1 state
+#    T = triplet P odd      3 states
+#    T2 = triplet P even       3 states
+
+ -- scripts --
+
+runit N SYM : do calculation. N is number of points.  DO ME FIRST.
+
+runone N Radius Theta SYM
+
+runsometheta N SYM
+
+
+

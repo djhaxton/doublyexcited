@@ -1,0 +1,21 @@
+F90 = ftn 
+CC = cc 
+
+
+OPTS = -fast -DPGFFLAG -DUSE_PETSC -Mbounds -Mchkptr
+OPTS = -fast -DPGFFLAG -DUSE_PETSC
+COPTS = -DPGFFLAG
+
+
+LIBBLAS=
+
+INCPETSC= 
+LIBPETSC= 
+
+INCPETSC= -I/opt/cray/petsc/3.4.2.0/complex/PGI/121/interlagos/include
+INCPETSC= -I$(PETSC_DIR)/include
+LIBPETSC= -L$(PETSC_DIR)/lib -lcraypetsc_gnu_complex
+
+INCS=$(INCPETSC) $(INCSLU)
+LIBS=$(LIBPETSC) $(LIBSLU) $(LIBMETIS) $(LIBBLAS)
+

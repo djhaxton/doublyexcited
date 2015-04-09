@@ -1,0 +1,39 @@
+
+SineDVR.F90          !! gets sine dvr hamiltonian
+arg.c                !! for use of c random number generator (nevermind)
+blocklanczos.F90     !! block lanczos subroutine, standalone (needs eigen.F90 only)
+eigen.F90            !! LAPACK wrappers
+myprogram.f90        !! demo program.  
+
+
+The demo program does the harmonic oscillator in 1D using sinc DVR.  
+As such, it is a poor use of lanczos, and you will find that the program doesn't
+do the diagonalization very fast at all.  This is because, the Sinc DVR in 1D has
+a full hamiltonian, no zero entries.  So it is a dense matrix vector multiply,
+which takes time.
+
+Note the following variables to be set in module mymodule, file myprogram.f90.
+Edit that part of that file; otherwise you shouldn't need to edit anything
+in order to play around with this demonstration
+
+
+      size=9999, &         !! number of points (size of problem)
+      order=199, &         !! maximum krylov dimension
+      lancheckmod=50       !! check for convergence every this number of
+                            !!   krylov iterations
+
+  real*8 :: lanthresh=1d-3  !! lanczos convergence criterion
+  real*8 :: length=15d0, &  !! size of "box", determines spacing
+       springconstant=1d0   !! spring constant.  harmonic oscillator.
+
+  complex*16 :: etarget = -1d10  !! TARGET ENERGY.  The numvects vectors
+                                  !!  closest to etarget are calculated.
+
+
+
+To use the blocklanczos subroutines, take blocklanczos.f90 and eigen.f90 which should
+be self contained.  Check the input to blocklanczos0(), and supply a matrix-vector
+multiplication subroutine as the penultimate argument.
+
+DJH 10-14-14
+

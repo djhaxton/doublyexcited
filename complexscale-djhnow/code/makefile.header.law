@@ -1,0 +1,23 @@
+F90 = mpif90 -cpp 
+CC = mpicc 
+
+LINKOPTS=
+
+
+#using this for fast
+OPTS = -ipo -O3 -xHost -static
+
+#using this for debug
+OPTS = -C -check all,noarg_temp_created -traceback -warn all -gen_interfaces -traceback -static -warn nounused
+
+
+LIBBLAS= -L$(FFTW_DIR)/lib -L$(MKL_DIR)/lib/em64t -lmkl_intel_lp64 -lmkl_sequential -lmkl_core -lfftw3
+
+LIBBLAS= -L$(MKL_DIR)/lib/em64t -lmkl_intel_lp64 -lmkl_sequential -lmkl_core 
+
+INCPETSC= 
+LIBPETSC= 
+
+INCS=$(INCPETSC) $(INCSLU)
+LIBS=$(LIBPETSC) $(LIBSLU) $(LIBMETIS) $(LIBBLAS)
+

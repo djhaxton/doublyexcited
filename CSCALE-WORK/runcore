@@ -1,0 +1,67 @@
+
+# CALLED BY RUNMINE -- EXPERT ROUTINE IF STANDALONE
+
+# syntax runit N OPT INEXT OUTEXT OTHEROPT1 OTHEROPT2...
+# N is number of points; OPT is symmetry, see below.
+
+if [[ "$4 " == " " ]]
+then
+
+  echo "need N where number of points on side is 2N+1; S, S2, or T; input binary extension; output binary extension; optional additional arguments."
+  exit
+
+fi
+
+nprocs=$1
+np=$2
+myopt=$3
+inext=$4
+outext=$5
+
+infile="eigvecs.$inext"
+outfile="eigvecs.$outext"
+
+# shift is not used (reading from file)
+#  keep these options here though; can do Nev through runmine
+
+case $myopt in 
+"S")
+	opt=""
+;;
+"T")
+        opt="Trip Nev=3"
+;;
+"T2")
+        opt="Trip Nev=3 Skip=3"
+;;
+"S2")
+        opt="Nev=5 Skip=1"
+;;
+"S3")
+        opt="Nev=3 Skip=6"
+;;
+"S4")
+        opt="Nev=1 Skip=9"
+;;
+*)
+   echo "ERROR OPTIxxON $myopt"
+   exit
+;;
+esac
+
+shift
+shift
+shift
+shift
+shift
+
+ aprun  -n $nprocs ./doublyexcited Read N=$np Inp=Input.Inp.singlet $opt Outfile=$outfile Infile=$infile $@ |tee Outs/Out.$outext
+
+
+
+
+
+
+
+
+

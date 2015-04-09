@@ -1,0 +1,33 @@
+
+# scripts for N=2 doubly excited states by djh
+#
+# Runs for given N, radius, and symmetry
+# first run runsomen 
+
+if [[ "$4 " == " " ]]
+then
+	echo "stephanie, need input!"
+	exit
+fi
+
+nprocs=$1
+np=$2
+sym=$3
+radius=$4
+
+inext="$sym.N5"
+
+inext="$sym.R$radius.T$theta.N$np"
+
+for theta in 0.2 0.18 0.16 0.14 0.12 0.10 0.08 0.06 0.04 0.02 0.00
+do
+
+outext="$sym.R$radius.T$theta.N$np"
+
+./runcore $nprocs $np $sym $inext $outext Theta=$theta R=$radius
+
+inext=$outext
+
+done
+
+

@@ -1,0 +1,29 @@
+F90 = ftn 
+CC = cc 
+
+
+
+
+#using this for debug
+OPTS = -C -check all,noarg_temp_created -traceback -warn all -gen_interfaces -traceback -static -warn nounused -DUSE_PETSC -DPETSC_LOW_VERFLAG
+
+#using this for fast
+OPTS = -ipo -O3 -xHost -dynamic -DUSE_PETSC -DPETSC_LOW_VERFLAG
+
+OPTS = -ipo -O3 -xHost -static -DUSE_PETSC -DPETSC_LOW_VERFLAG
+
+OPTS = -fast -static -DUSE_PETSC -DPETSC_LOW_VERFLAG
+
+OPTS = -fast -dynamic -DUSE_PETSC -DPETSC_LOW_VERFLAG
+
+
+COPTS = 
+
+LIBBLAS= 
+
+INCPETSC= 
+LIBPETSC= 
+
+INCS=$(INCPETSC) $(INCSLU)
+LIBS=$(LIBPETSC) $(LIBSLU) $(LIBMETIS) $(LIBBLAS)
+

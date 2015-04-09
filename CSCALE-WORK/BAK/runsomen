@@ -1,0 +1,56 @@
+
+# scripts for n=2 doubly excited states by djh
+#
+# Runs for given Nmax, symmetry, and radius
+#  starting at N=5.
+#
+# Guess on file has been made by runit 5 symmmetry.
+
+if [[ "$4 " == " " ]]
+then
+	echo "stephanie, need input!"
+	exit
+fi
+
+nprocs=$1
+nmax=$2
+sym=$3
+radius=$4
+
+theta=0.2
+
+if [[ "$5 " == " " ]]
+then
+
+    np=6
+
+    inext="$sym.N5"
+
+else
+
+   np=$5
+   last=`expr $np - 1`
+
+   inext="$sym.R$radius.T$theta.N$last"
+
+fi
+
+
+
+
+
+
+while [[ $np -le $nmax ]]
+do
+
+  outext="$sym.R$radius.T$theta.N$np"
+
+  ./runcore $np $sym $inext $outext 
+
+  (( np++ ))
+
+  inext=$outext
+
+done
+
+

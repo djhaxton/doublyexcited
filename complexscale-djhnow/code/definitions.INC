@@ -1,0 +1,2 @@
+#define NUMBER COMPLEX*16
+#define ISREAL 0
